@@ -7,9 +7,9 @@ turn = 'X'
 count = 0
 
 def printBoard(board):
-    print(board['7'] + '|' + board['8'] + '|' + board['9'] + '|')
+    print(board['7'] + '|' + board['8'] + '|' + board['9'])
     print('-+-+-')
-    print(board['4'] + '|'+ board['5'] + '|' + board['6'] + '|')
+    print(board['4'] + '|'+ board['5'] + '|' + board['6'])
     print('-+-+-')
     print(board['1'] + '|' + board['2'] + '|' + board['3'])
 def checkWin(board, player):
@@ -46,8 +46,13 @@ for i in range(10):
         theBoard[move]= turn
         count +=1
     else:
-        print('That place is already filled. \nMove to which place?')
-        continue
+        print('That place is already filled. \nMove to which place? 9 top right and 1 bottom left')
+        move = input()
+        if move in theBoard and theBoard[move]=='':
+            theBoard[move]= turn
+            count +=1
+        else:
+            continue
     
     # Check if current player won
     if checkWin(theBoard, turn):
